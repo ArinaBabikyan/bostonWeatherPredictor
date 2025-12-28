@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>24-hour Temperature Forecast</title>
+  <style>
+    body {
+      margin: 0; padding: 2rem; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #ffffff; color: #111827;
+    }
+    .card {
+      max-width: 640px; margin: 0 auto; padding: 1.25rem;
+      border: 1px solid #e5e7eb; border-radius: 12px; background: #f9fafb;
+    }
+    h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+    p  { margin: 0.25rem 0; color: #4b5563; }
+    .prediction {
+      margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px;
+      background: #eef2ff; border: 1px solid #c7d2fe; color: #1f2937; font-size: 1.25rem;
+    }
+    .error {
+      margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px;
+      background: #fee2e2; border: 1px solid #fca5a5; color: #b91c1c;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>24-hour Temperature Forecast</h1>
+    <p>Model output (t+24h) using recent Open‑Meteo hourly data.</p>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% else %}
+      <div class="prediction">
+        Location: {{ latitude }}, {{ longitude }} &middot; Timezone: {{ timezone }}<br>
+        Forecast horizon: {{ forecast_horizon_hours }}h<br>
+        <strong>Prediction:</strong> {{ prediction|floatformat:2 }} {{ units }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "input_size": 7,
+  "feature_names": [
+    "temperature_2m",
+    "relative_humidity_2m",
+    "surface_pressure",
+    "wind_speed_10m",
+    "precipitation",
+    "year",
+    "time"
+  ],
+  "history_window": 72,
+  "forecast_horizon": 24,
+  "target_column_idx": 0
+}
